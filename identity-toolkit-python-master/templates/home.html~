@@ -1,0 +1,108 @@
+<!--
+
+/*
+ *
+ * Copyright 2013 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Copy and paste here the "Sign-in button javascript" you downloaded from Developer Console as gitkit-signin-button.html -->
+
+<script type="text/javascript" src="//www.gstatic.com/authtoolkit/js/gitkit.js"></script>
+<link type=text/css rel=stylesheet href="//www.gstatic.com/authtoolkit/css/gitkit.css" />
+<script type=text/javascript>
+  window.google.identitytoolkit.signInButton(
+    '#navbar', // accepts any CSS selector
+    {
+      widgetUrl: "/widget",
+      signOutUrl: "/",
+    }
+  );
+</script>
+
+<!-- End configuration -->
+
+</head>
+<body>
+<style type="text/css">
+#wrap {
+   margin:0 auto;
+}
+#left_col {
+   float:left;
+
+}
+#right_col {
+   float:left;
+   margin-left: 300px;
+}
+</style>
+<!-- Include the sign in button widget with the matching 'navbar' id -->
+<div id="navbar"></div>
+
+<div id="wrap">
+    <div id="left_col">
+<!-- End identity toolkit widget -->
+    <a href="{{ url_for('manage',page=1) }}"><button>Manage Workouts</button></a>
+    <a href="{{ url_for('enter') }}"><button>Add Ks</button></a>
+    <a href="{{ url_for('team') }}"><button>Change Team</button></a>
+    <a href="{{ url_for('profile') }}"><button>My Info</button></a>
+    <form action="{{url_for('home')}}" method="POST">
+        <input type="submit" name="my-form" value="Filter">
+        <select name ="typefilter">
+            <option value="None">None</option>
+            <option value="Other">Other</option>
+            <option value="Upperclassmen">Upperclassmen</option>
+            <option value="Underclassmen">Underclassmen</option>
+            <option value="Middle_School">Middle School</option>
+            <option value="Coach">Coach</option>
+        </select>
+        <select name ="divisionfilter">
+            <option value="None">None</option>
+            <option value="Other">Other</option>
+            <option value="Red">Red (Varsity-ish)</option>
+            <option value="White">White (JV)</option>
+        </select>
+    </form>
+<table>
+    <tr>
+    <td><b>Name</b></td><td><b>Ks</b></td><td><b>Division</b></td><td><b>Role</b></td><td><b>Team</b></td>
+    </tr>
+
+    {{ TABLE }}
+
+</table>
+<a href="{{ url_for('enter') }}"><button>Add Ks</button></a>
+    </div>
+    <div id="right_col">
+    <p><b>Team Standings</b></p>
+    <table>
+    <tr>
+    <td><b>Team Name</b></td><td><b>Ks</b></td>
+    </tr>
+    
+    {{TEAMTABLE}}
+    
+    </table>
+    </div>
+</div>
+
+</body>
+</html>

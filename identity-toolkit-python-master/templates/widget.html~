@@ -1,0 +1,56 @@
+<!--
+
+/*
+ *
+ * Copyright 2013 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!-- Copy and paste here the "Widget javascript" you downloaded from Developer Console as gitkit-widget.html -->
+<!-- Note: To support Yahoo, you will need to replace the 'JAVASCRIPT_ESCAPED_POST_BODY' with '{{ POST_BODY }}' as shown below -->
+<script type="text/javascript" src="//www.gstatic.com/authtoolkit/js/gitkit.js"></script>
+<link type="text/css" rel="stylesheet" href="//www.gstatic.com/authtoolkit/css/gitkit.css" />
+<script type="text/javascript">
+  var config = {
+  "widgetUrl": "http://localhost:8000/widget",
+  "signInSuccessUrl": "/",
+  "signOutUrl": "/",
+  "oobActionUrl": "/",
+  "apiKey": "AIzaSyBGnTYxmwAnrPhuQceT4GjNd7WnDjRGmGA",
+  "siteName": "this site",
+  "signInOptions": ["password","google"]
+    }
+  // The HTTP POST body should be escaped by the server to prevent XSS
+  window.google.identitytoolkit.start(
+      '#gitkitWidgetDiv', // accepts any CSS selector
+      config,
+      '{{ POST_BODY }}');
+</script>
+<!-- End modification -->
+
+</head>
+<body>
+
+<!-- Include the sign in page widget with the matching 'gitkitWidgetDiv' id -->
+<div id="gitkitWidgetDiv"></div>
+<!-- End identity toolkit widget -->
+
+</body></html>
